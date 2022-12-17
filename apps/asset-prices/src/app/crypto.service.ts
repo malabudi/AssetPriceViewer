@@ -10,6 +10,6 @@ export class CryptoService {
   constructor(private http: HttpClient) { }
 
   getCryptos() {
-    return this.http.get('http://localhost:3000/cryptos');
+    return this.http.get('http://localhost:3333/api/cryptos');
   }
 }

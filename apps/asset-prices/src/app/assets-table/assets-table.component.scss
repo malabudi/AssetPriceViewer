@@ -1,0 +1,60 @@
+@import "../../styles.scss";
+
+.asset-table {
+    border-collapse: collapse;
+    border-radius: 0.4em;
+    overflow: hidden;
+    margin: 25px 0;
+    font-size: 0.9em;
+    min-width: 400px;
+    max-width: 100%;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+// Header
+.asset-table thead tr {
+    background-color: $main-color;
+    color: #ffffff;
+    text-align: left;
+}
+
+// Table cells
+.asset-table th,
+.asset-table td {
+    padding: 12px 15px;
+}
+
+// Table rows
+.asset-table tbody tr {
+    border-bottom: thin solid #dddddd;
+}
+
+.asset-table tbody tr:nth-of-type(odd) {
+    background-color: $light-accent;
+    transition-duration: 0.1s;
+}
+
+.asset-table tbody tr:nth-of-type(even) {
+    background-color: #ffffff;
+    transition-duration: 0.1s;
+}
+
+.asset-table tbody tr:last-of-type {
+    border-bottom: 2px solid $main-color;
+}
+
+// Active Rows
+.asset-table tbody tr:nth-of-type(odd):hover {
+    background-color: $hover-color;
+    color: #ffffff;
+}
+
+.asset-table tbody tr:nth-of-type(even):hover {
+    background-color: $hover-color;
+    color: #ffffff;
+}
+
+// non table selectors
+.asset-name {
+    font-weight: bold;
+}
