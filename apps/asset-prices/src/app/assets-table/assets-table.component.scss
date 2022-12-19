@@ -21,7 +21,7 @@
 // Table cells
 .asset-table th,
 .asset-table td {
-    padding: 12px 15px;
+    padding: 12px 25px;
 }
 
 // Table rows
@@ -44,12 +44,7 @@
 }
 
 // Active Rows
-.asset-table tbody tr:nth-of-type(odd):hover {
-    background-color: $hover-color;
-    color: #ffffff;
-}
-
-.asset-table tbody tr:nth-of-type(even):hover {
+.asset-table tbody tr:hover {
     background-color: $hover-color;
     color: #ffffff;
 }
@@ -58,3 +53,52 @@
 .asset-name {
     font-weight: bold;
 }
+
+// sortable header directive
+th[sortable] {
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+  
+th[sortable].desc:before,
+th[sortable].asc:before {
+    content: "";
+    display: block;
+    background:
+    url("https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/White_Arrow_Up.svg/1024px-White_Arrow_Up.svg.png")
+      no-repeat;
+    background-size: 16px;
+    width: 16px;
+    height: 16px;
+    float: right;
+    margin-left: 10px;
+    margin-top: 4px;
+    transition: 0.25s ease;
+}
+  
+th[sortable].desc:before {
+    transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+}
+
+// input styling
+.form-control {
+    width: 30%;
+    font-size: 0.9em;
+    padding: 8px 10px;
+    display: inline-block;
+    border: thin solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+// Internet Explorer - remove X form search bar
+.form-control::-ms-clear { display: none; width : 0; height: 0; }
+.form-control::-ms-reveal { display: none; width : 0; height: 0; }
+
+// Google Chrome - remove X form search bar
+.form-control::-webkit-search-decoration,
+.form-control::-webkit-search-cancel-button,
+.form-control::-webkit-search-results-button,
+.form-control::-webkit-search-results-decoration { display: none; }
