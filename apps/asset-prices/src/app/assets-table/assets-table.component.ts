@@ -9,7 +9,8 @@ import { SortableHeaderDirective, SortEvent, compare } from '../sortable-header.
   template: `
     <div class='table-container'>
       <div class="form-group">
-        <input type="search" class="form-control" [(ngModel)]="filter" placeholder="Filter by name or symbol">
+        <input type="search" class="form-control" [(ngModel)]="filter" placeholder="Filter by name or symbol"
+        (input)='p = 1'>
       </div>
       <table class='asset-table'>
         <thead>
@@ -22,7 +23,7 @@ import { SortableHeaderDirective, SortEvent, compare } from '../sortable-header.
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor='let crypto of cryptoListings | asset:filter'>
+          <tr *ngFor='let crypto of cryptoListings | asset:filter | paginate: { itemsPerPage: 10, currentPage: p }'>
             <td class='asset-name'>{{ crypto.name }}</td>
             <td>{{ crypto.symbol }}</td>
             <td>{{ '$' + (crypto.price | number: '1.2-2')?.toString() }}</td>
@@ -32,6 +33,7 @@ import { SortableHeaderDirective, SortEvent, compare } from '../sortable-header.
         </tbody>
       </table>
     </div>
+    <pagination-controls class="table-pagination" (pageChange)="p = $event"></pagination-controls>
   `,
   styleUrls: ['./assets-table.component.scss'],
 })
@@ -39,14 +41,16 @@ export class AssetsTableComponent {
   public cryptoListings: Array<IAsset>;
   public cryptoListingsCopy: Array<IAsset>;
   public filter: string;
+  public p: number;
 
   @ViewChildren(SortableHeaderDirective)
-  public headers!: QueryList<SortableHeaderDirective>;
+  private headers!: QueryList<SortableHeaderDirective>;
 
   constructor(private cryptoService: CryptoService) {
     this.cryptoListings = []
     this.cryptoListingsCopy = []
     this.filter = "";
+    this.p = 1
   }
 
   // eslint-disable-next-line @angular-eslint/use-lifecycle-interface

@@ -6,9 +6,11 @@
     overflow: hidden;
     margin: 25px 0;
     font-size: 0.9em;
-    min-width: 400px;
     max-width: 100%;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+
+    width: 50vw;
+    table-layout: fixed;
 }
 
 // Header
@@ -16,6 +18,10 @@
     background-color: $main-color;
     color: #ffffff;
     text-align: left;
+}
+
+.asset-table th {
+    white-space: nowrap;
 }
 
 // Table cells
@@ -59,7 +65,7 @@ th[sortable] {
     cursor: pointer;
     user-select: none;
     -webkit-user-select: none;
-  }
+}
   
 th[sortable].desc:before,
 th[sortable].asc:before {
@@ -74,7 +80,7 @@ th[sortable].asc:before {
     float: right;
     margin-left: 10px;
     margin-top: 4px;
-    transition: 0.25s ease;
+    transition: 0.3s ease;
 }
   
 th[sortable].desc:before {
@@ -82,14 +88,14 @@ th[sortable].desc:before {
     -ms-transform: rotate(180deg);
 }
 
-// input styling
+// search bar styling
 .form-control {
-    width: 30%;
+    width: 50%;
     font-size: 0.9em;
     padding: 8px 10px;
     display: inline-block;
     border: thin solid #ccc;
-    border-radius: 4px;
+    border-radius: 0.4em;
     box-sizing: border-box;
 }
 
@@ -102,3 +108,18 @@ th[sortable].desc:before {
 .form-control::-webkit-search-cancel-button,
 .form-control::-webkit-search-results-button,
 .form-control::-webkit-search-results-decoration { display: none; }
+
+// table pagination
+.table-pagination ::ng-deep .ngx-pagination {
+    float: right;
+}
+
+.table-pagination ::ng-deep .ngx-pagination .current {
+    background: $hover-color;
+}
+
+.table-pagination ::ng-deep .ngx-pagination .current,
+.table-pagination ::ng-deep .ngx-pagination a:hover {
+    border-radius: 0.4em;
+    transition-duration: 0.05s;
+}

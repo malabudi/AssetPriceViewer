@@ -23,11 +23,6 @@ export interface SortEvent {
 @Directive({
   // eslint-disable-next-line @angular-eslint/directive-selector
   selector: 'th[sortable]'
-  /*host: {
-    '[class.asc]': 'direction === "asc"',
-    '[class.desc]': 'direction === "desc"',
-    '(click)': 'rotate()',
-  },*/
 })
 export class SortableHeaderDirective {
   @Input() sortable: SortColumn = '';

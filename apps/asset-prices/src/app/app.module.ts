@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 import { AppComponent } from './app.component';
 import { HeroMainComponent } from './hero-main/hero-main.component';
@@ -21,7 +22,8 @@ import { SortableHeaderDirective } from './sortable-header.directive';
   imports: [
     HttpClientModule,
     BrowserModule,
-    FormsModule
+    FormsModule,
+    NgxPaginationModule
   ],
   providers: [CryptoService],
   bootstrap: [AppComponent],
