@@ -12,6 +12,7 @@ import { SortableHeaderDirective, SortEvent, compare } from '../sortable-header.
         <input type="search" class="form-control" [(ngModel)]="filter" placeholder="Filter by name or symbol"
         (input)='p = 1'>
       </div>
+
       <table class='asset-table'>
         <thead>
           <tr>
@@ -23,16 +24,32 @@ import { SortableHeaderDirective, SortEvent, compare } from '../sortable-header.
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor='let crypto of cryptoListings | asset:filter | paginate: { itemsPerPage: 10, currentPage: p }'>
+          <tr *ngFor='let crypto of cryptoListings | asset:filter | paginate: { itemsPerPage: 25, currentPage: p }'>
             <td class='asset-name'>{{ crypto.name }}</td>
             <td>{{ crypto.symbol }}</td>
             <td>{{ '$' + (crypto.price | number: '1.2-2')?.toString() }}</td>
             <td>{{ '$' + (crypto.market_cap | number: '1.2-2')?.toString() }}</td>
-            <td>{{ crypto.percent_change_24h | number: '1.2-2' }}%</td>
+            <td [ngStyle]="{'color': crypto.percent_change_24h >= 0 ? 'green' : 'red'}">{{ crypto.percent_change_24h | number: '1.2-2' }}%</td>
          </tr>
         </tbody>
       </table>
     </div>
+
+    <!-- Temp, loading indicator -->
+    <div *ngIf='isLoading' class="center-page">
+        <div class="sk-cube-grid">
+          <div class="sk-cube sk-cube1"></div>
+          <div class="sk-cube sk-cube2"></div>
+          <div class="sk-cube sk-cube3"></div>
+          <div class="sk-cube sk-cube4"></div>
+          <div class="sk-cube sk-cube5"></div>
+          <div class="sk-cube sk-cube6"></div>
+          <div class="sk-cube sk-cube7"></div>
+          <div class="sk-cube sk-cube8"></div>
+          <div class="sk-cube sk-cube9"></div>
+      </div>
+    </div>
+
     <pagination-controls class="table-pagination" (pageChange)="p = $event"></pagination-controls>
   `,
   styleUrls: ['./assets-table.component.scss'],
@@ -42,6 +59,7 @@ export class AssetsTableComponent {
   public cryptoListingsCopy: Array<IAsset>;
   public filter: string;
   public p: number;
+  public isLoading: boolean;
 
   @ViewChildren(SortableHeaderDirective)
   private headers!: QueryList<SortableHeaderDirective>;
@@ -50,11 +68,12 @@ export class AssetsTableComponent {
     this.cryptoListings = []
     this.cryptoListingsCopy = []
     this.filter = "";
-    this.p = 1
+    this.p = 1;
+    this.isLoading = true;
   }
 
   // eslint-disable-next-line @angular-eslint/use-lifecycle-interface
-  ngAfterViewInit() {
+  ngOnInit() {
     this.fetchAllCryptos();
   }
 
@@ -69,11 +88,11 @@ export class AssetsTableComponent {
         listing.price = val.quote.USD.price;
         listing.market_cap = val.quote.USD.market_cap;
         listing.percent_change_24h = val.quote.USD.percent_change_24h;
-        
         this.cryptoListings.push(listing);
       });
 
       this.cryptoListingsCopy = this.cryptoListings;
+      this.isLoading = false;
     });
   }
 

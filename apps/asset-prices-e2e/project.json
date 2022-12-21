@@ -19,12 +19,18 @@
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",
-      "outputs": ["{options.outputFile}"],
+      "outputs": [
+        "{options.outputFile}"
+      ],
       "options": {
-        "lintFilePatterns": ["apps/asset-prices-e2e/**/*.{js,ts}"]
+        "lintFilePatterns": [
+          "apps/asset-prices-e2e/**/*.{js,ts}"
+        ]
       }
     }
   },
   "tags": [],
-  "implicitDependencies": ["asset-prices"]
+  "implicitDependencies": [
+    "asset-prices"
+  ]
 }
