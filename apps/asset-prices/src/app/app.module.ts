@@ -10,6 +10,7 @@ import { AssetsTableComponent } from './assets-table/assets-table.component';
 import { CryptoService } from './crypto.service';
 import { AssetPipe } from './asset.pipe';
 import { SortableHeaderDirective } from './sortable-header.directive';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { SortableHeaderDirective } from './sortable-header.directive';
     HttpClientModule,
     BrowserModule,
     FormsModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    NgbModule
   ],
   providers: [CryptoService],
   bootstrap: [AppComponent],

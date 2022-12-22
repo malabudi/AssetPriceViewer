@@ -3,4 +3,21 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    margin-bottom: 75px;
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+@media screen and (max-width: 900px) {
+    .hero {
+        margin-bottom: 50px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .hero {
+        margin-bottom: 20px;
+    }
 }

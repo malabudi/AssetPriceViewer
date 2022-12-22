@@ -24,7 +24,6 @@
           "apps/asset-prices/src/assets"
         ],
         "styles": [
-          "@angular/material/prebuilt-themes/indigo-pink.css",
           "apps/asset-prices/src/styles.scss"
         ],
         "scripts": []

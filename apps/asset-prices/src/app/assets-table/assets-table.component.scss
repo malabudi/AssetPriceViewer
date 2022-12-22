@@ -72,6 +72,10 @@
 }
 
 //------------------------------------
+.table-responsive {
+    overflow-x: auto;
+}
+
 .asset-table {
     border-collapse: collapse;
     border-radius: 0.4em;
@@ -125,11 +129,6 @@
 .asset-table tbody tr:hover {
     background-color: $hover-color;
     color: #ffffff;
-}
-
-// non table selectors
-.asset-name {
-    font-weight: bold;
 }
 
 // sortable header directive
@@ -187,7 +186,7 @@ th[sortable].desc:before {
 }
 
 .table-pagination ::ng-deep .ngx-pagination .current {
-    background: $hover-color;
+    background: $accent-color;
 }
 
 .table-pagination ::ng-deep .ngx-pagination .current,
@@ -196,8 +195,86 @@ th[sortable].desc:before {
     transition-duration: 0.05s;
 }
 
-// loading
-.loading{
-    color: white;
-    padding-top: 50px;
+// Media Queries
+// Tablets
+@media screen and (max-width: 950px) {
+    .form-control {
+        width: 70%;
+        font-size: 0.8em;
+    }
+
+    .asset-table tbody tr:hover {
+        background-color: $light-accent;
+        color: black;
+    }
+
+    .asset-table tbody tr:nth-of-type:hover(odd) {
+        background-color: $light-accent;
+    }
+    
+    .asset-table tbody tr:nth-of-type:hover(even) {
+        background-color: #ffffff;
+    }
+
+    table {
+      border: 0;
+    }
+  
+    table caption {
+      font-size: 1.3em;
+    }
+    
+    table thead {
+      border: none;
+      clip: rect(0 0 0 0);
+      height: 1px;
+      margin: -1px;
+      overflow: hidden;
+      padding: 0;
+      position: absolute;
+      width: 1px;
+    }
+    
+    table tr {
+      border-bottom: 3px solid #ddd;
+      display: block;
+    }
+    
+    table td {
+      border-bottom: 1px solid #ddd;
+      display: block;
+      text-align: right;
+    }
+    
+    table td::before {
+      content: attr(data-label);
+      float: left;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+    
+    table td:last-child {
+      border-bottom: 0;
+    }
+  }
+
+// Phones
+@media screen and (max-width: 550px) {
+    .table-container, .asset-table, .form-group, .form-control {
+        max-width: 80vw;
+        margin: auto;
+    }
+
+    .form-control {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}
+
+// Even smaller devices
+@media screen and (max-width: 400px) {
+    .asset-table{
+        width: 80vw;
+        margin: auto;
+    }
 }

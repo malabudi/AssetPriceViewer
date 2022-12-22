@@ -13,26 +13,28 @@ import { SortableHeaderDirective, SortEvent, compare } from '../sortable-header.
         (input)='p = 1'>
       </div>
 
-      <table class='asset-table'>
-        <thead>
-          <tr>
-            <th scope='col' sortable='name' (sort)='onSort($event)'>Name</th>
-            <th scope='col' sortable='symbol' (sort)='onSort($event)'>Symbol</th>
-            <th scope='col' sortable='price' (sort)='onSort($event)'>Price</th>
-            <th scope='col' sortable='market_cap' (sort)='onSort($event)'>Market Cap</th>
-            <th scope='col' sortable='percent_change_24h' (sort)='onSort($event)'>24h% Change</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor='let crypto of cryptoListings | asset:filter | paginate: { itemsPerPage: 25, currentPage: p }'>
-            <td class='asset-name'>{{ crypto.name }}</td>
-            <td>{{ crypto.symbol }}</td>
-            <td>{{ '$' + (crypto.price | number: '1.2-2')?.toString() }}</td>
-            <td>{{ '$' + (crypto.market_cap | number: '1.2-2')?.toString() }}</td>
-            <td [ngStyle]="{'color': crypto.percent_change_24h >= 0 ? 'green' : 'red'}">{{ crypto.percent_change_24h | number: '1.2-2' }}%</td>
-         </tr>
-        </tbody>
-      </table>
+      <div class='table-responsive'>
+        <table class='asset-table'>
+          <thead>
+            <tr>
+              <th scope='col' sortable='name' (sort)='onSort($event)'>Name</th>
+              <th scope='col' sortable='symbol' (sort)='onSort($event)'>Symbol</th>
+              <th scope='col' sortable='price' (sort)='onSort($event)'>Price</th>
+              <th scope='col' sortable='market_cap' (sort)='onSort($event)'>Market Cap</th>
+              <th scope='col' sortable='percent_change_24h' (sort)='onSort($event)'>24H% Change</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor='let crypto of cryptoListings | asset:filter | paginate: { itemsPerPage: 25, currentPage: p }'>
+              <th scope='row' class='asset-name'>{{ crypto.name }}</th>
+              <td data-label='Symbol'>{{ crypto.symbol }}</td>
+              <td data-label='Price'>{{ '$' + (crypto.price | number: '1.2-2')?.toString() }}</td>
+              <td data-label='Market Cap'>{{ '$' + abbreviateNumber(crypto.market_cap) }}</td>
+              <td data-label='24H% Change' [ngStyle]="{'color': crypto.percent_change_24h >= 0 ? 'green' : 'red'}">{{ crypto.percent_change_24h | number: '1.2-2' }}%</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
 
     <!-- Temp, loading indicator -->
@@ -95,6 +97,23 @@ export class AssetsTableComponent {
       this.isLoading = false;
     });
   }
+
+  abbreviateNumber(val: number) {
+    // Nine Zeroes for Billions
+    return Math.abs(Number(val)) >= 1.0e+9
+
+    ? (Math.abs(Number(val)) / 1.0e+9).toFixed(2) + 'B'
+    // Six Zeroes for Millions 
+    : Math.abs(Number(val)) >= 1.0e+6
+
+    ? (Math.abs(Number(val)) / 1.0e+6).toFixed(2) + 'M'
+    // Three Zeroes for Thousands
+    : Math.abs(Number(val)) >= 1.0e+3
+
+    ? (Math.abs(Number(val)) / 1.0e+3).toFixed(2) + 'K'
+
+    : Math.abs(Number(val));
+}
 
   onSort({ column, direction }: SortEvent) {
     // resetting other headers
