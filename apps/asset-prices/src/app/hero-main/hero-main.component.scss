@@ -10,6 +10,10 @@ h1 {
     margin-bottom: 20px;
 }
 
+h2 {
+    font-size: 25px;
+}
+
 @media screen and (max-width: 900px) {
     .hero {
         margin-bottom: 50px;
@@ -19,5 +23,9 @@ h1 {
 @media screen and (max-width: 500px) {
     .hero {
         margin-bottom: 20px;
+    }
+
+    h2 {
+        font-size: 16px;
     }
 }

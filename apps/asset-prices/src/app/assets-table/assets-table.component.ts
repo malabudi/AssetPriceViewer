@@ -25,7 +25,7 @@ import { SortableHeaderDirective, SortEvent, compare } from '../sortable-header.
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor='let crypto of cryptoListings | asset:filter | paginate: { itemsPerPage: 25, currentPage: p }'>
+            <tr *ngFor='let crypto of cryptoListings | asset:filter | paginate: { itemsPerPage: 10, currentPage: p }'>
               <th scope='row' class='asset-name'>{{ crypto.name }}</th>
               <td data-label='Symbol'>{{ crypto.symbol }}</td>
               <td data-label='Price'>{{ '$' + (crypto.price | number: '1.2-2')?.toString() }}</td>
@@ -35,24 +35,28 @@ import { SortableHeaderDirective, SortEvent, compare } from '../sortable-header.
           </tbody>
         </table>
       </div>
-    </div>
 
-    <!-- Temp, loading indicator -->
-    <div *ngIf='isLoading' class="center-page">
-        <div class="sk-cube-grid">
-          <div class="sk-cube sk-cube1"></div>
-          <div class="sk-cube sk-cube2"></div>
-          <div class="sk-cube sk-cube3"></div>
-          <div class="sk-cube sk-cube4"></div>
-          <div class="sk-cube sk-cube5"></div>
-          <div class="sk-cube sk-cube6"></div>
-          <div class="sk-cube sk-cube7"></div>
-          <div class="sk-cube sk-cube8"></div>
-          <div class="sk-cube sk-cube9"></div>
+      <!-- Temp, loading indicator -->
+      <div *ngIf='isLoading' class="center-page">
+          <div class="sk-cube-grid">
+            <div class="sk-cube sk-cube1"></div>
+            <div class="sk-cube sk-cube2"></div>
+            <div class="sk-cube sk-cube3"></div>
+            <div class="sk-cube sk-cube4"></div>
+            <div class="sk-cube sk-cube5"></div>
+            <div class="sk-cube sk-cube6"></div>
+            <div class="sk-cube sk-cube7"></div>
+            <div class="sk-cube sk-cube8"></div>
+            <div class="sk-cube sk-cube9"></div>
+        </div>
       </div>
+
+      <pagination-controls class="table-pagination" (pageChange)="p = $event"></pagination-controls>
     </div>
 
-    <pagination-controls class="table-pagination" (pageChange)="p = $event"></pagination-controls>
+    
+
+    
   `,
   styleUrls: ['./assets-table.component.scss'],
 })
@@ -80,6 +84,7 @@ export class AssetsTableComponent {
   }
 
   fetchAllCryptos() {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     this.cryptoService.getCryptos().subscribe( (res: any) => {
       res.data.forEach((val: CryptoAsset) => {
         const listing: IAsset = Object.create(null);

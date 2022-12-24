@@ -11,6 +11,7 @@ import { CryptoService } from './crypto.service';
 import { AssetPipe } from './asset.pipe';
 import { SortableHeaderDirective } from './sortable-header.directive';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -18,14 +19,15 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     HeroMainComponent,
     AssetsTableComponent,
     AssetPipe,
-    SortableHeaderDirective
+    SortableHeaderDirective,
+    NavbarComponent,
   ],
   imports: [
     HttpClientModule,
     BrowserModule,
     FormsModule,
     NgxPaginationModule,
-    NgbModule
+    NgbModule,
   ],
   providers: [CryptoService],
   bootstrap: [AppComponent],

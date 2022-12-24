@@ -1,0 +1,14 @@
+@import "../../styles.scss";
+
+.nav {
+    position: sticky;
+    background-color: $light-nav-bkg;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1rem;
+    height: 76px;
+    margin-bottom: 50px;
+    border-bottom: thin solid #bbcad7;
+}

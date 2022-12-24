@@ -4,14 +4,22 @@
 $main-color: #12232E;
 $secondary-color: #007CC7;
 $accent-color: #4DA8DA;
-$hover-color: #52b0e3;
+$hover-color: #78c2e9;
 $main-accent: #203647;
 $light-accent: #EEFBFB;
+$light-bkg-color: #fff;
+$light-nav-bkg: #8899A6;
+
+$dark-bkg-color: #212121;
+$dark-accent: #192734;
+$dark-row: #22303c;
+$dark-main-color: #0c1a23;
+$dark-content: #181818;
 
 html {
     -webkit-text-size-adjust: 100%;
-    font-family: Roboto, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
-      'Segoe UI', 'Helvetica Neue', Arial, 'Noto Sans', sans-serif,
+    font-family: BlinkMacSystemFont, 'Segoe UI', -apple-system, Roboto, ui-sans-serif, 
+    system-ui, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif,
       'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
       'Noto Color Emoji';
     line-height: 1.5;
@@ -19,13 +27,64 @@ html {
     font-size: 18px;
 }
 
-.site-wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
+html, body { 
+  height: 100%;
+  transition-duration: 0.25s;
 }
 
+body { margin: 0 auto; font-family: BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif; }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+// Dark Mode
+body.dark-theme {
+  background-color: $dark-bkg-color;
+  color: white;
+}
+
+// table
+body.dark-theme .asset-table thead tr {
+  background-color: $main-color;
+}
+
+body.dark-theme table.asset-table tbody tr:nth-of-type(even) {
+  background-color: $dark-accent !important;
+}
+
+body.dark-theme table.asset-table tbody tr:nth-of-type(odd) {
+  background-color: $dark-row !important;
+}
+
+body.dark-theme .asset-table tbody tr {
+  border-bottom: thin solid $main-color !important;
+}
+
+body.dark-theme table.asset-table tbody tr:hover {
+  background-color: $secondary-color !important;
+}
+
+// pagination
+body.dark-theme {
+  ul.ngx-pagination a:hover {
+    color: black !important;
+  }
+
+  ul.ngx-pagination li.current {
+    background: $secondary-color !important;
+  }
+}
+
+// navbar
+body.dark-theme div.nav {
+  background-color: $main-color;
+  border-bottom: thin solid $main-accent;
+}
+
+// filter bar
+body.dark-theme input.form-control {
+  background-color: $dark-content !important;
+  color: #fff !important;
+  outline: none;
+}
+
+body.dark-theme input.form-control::-webkit-input-placeholder {
+  color: #aaaaaa;
+}

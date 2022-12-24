@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
   template: `
     <div class='hero'>
       <h1>Asset Price Viewer</h1>
-      <p>Check out the latest prices on cryptocurrency, stocks, and precious metals</p>
+      <h2>Check out the latest prices on cryptocurrency, stocks, and precious metals</h2>
     </div>
     `,
   styleUrls: ['./hero-main.component.scss'],
