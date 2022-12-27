@@ -12,3 +12,46 @@
     margin-bottom: 50px;
     border-bottom: thin solid #bbcad7;
 }
+
+// dark/light theme button
+.theme-container {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.25s;
+}
+  
+.theme-container:hover {
+    cursor: pointer;
+}
+
+.shadow-dark, .shadow-light {
+    transition-duration: 0.2s;
+}
+
+.shadow-dark:hover {
+    background-color: #23282c;
+}
+  
+.shadow-light:hover {
+    background-color: #c8ced6;
+}
+  
+@keyframes change {
+    0% {
+      transform: scale(1);
+    }
+  
+    100% {
+      transform: scale(1.1);
+    }
+}
+  
+.change {
+    animation-name: change;
+    animation-duration: 0.2s;
+    animation-direction: alternate;
+}
