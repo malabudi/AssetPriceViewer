@@ -1,22 +1,25 @@
-import { ElementRef, ViewChild, Component, AfterViewInit } from '@angular/core';
+import { ElementRef, ViewChild, Component, AfterViewInit, OnInit } from '@angular/core';
 
 @Component({
   selector: 'asset-price-viewer-navbar',
   template: ` 
       <div class='nav'>
-        Navbar
+        <div>
+          <img class='main-nav-img' 
+          src='https://www.reshot.com/preview-assets/icons/DUCN7XW5P4/analytics-chart-DUCN7XW5P4.svg' 
+          alt='main navbar image'>
+        </div>
         <div #themeContainer class='theme-container'>
-          <img #themeIcon id="theme-icon" 
-          src="{{ isDarkMode ? darkURL : lightURL }}" 
-          alt="dark/light mode">
+          <img #themeIcon id='theme-icon'
+          src='{{ isDarkMode ? lightURL : darkURL }}' 
+          alt='dark/light mode'
+          title='{{ isDarkMode ? "Light Mode" : "Dark Mode" }}'>
         </div>
       </div>
-
-      
   `,
   styleUrls: ['./navbar.component.scss'],
 })
-export class NavbarComponent implements AfterViewInit {
+export class NavbarComponent implements AfterViewInit, OnInit {
   public isDarkDefault = window.matchMedia('( prefers-color-scheme: dark )');
   public darkURL = 'https://www.uplooder.net/img/image/2/addf703a24a12d030968858e0879b11e/moon.svg';
   public lightURL = 'https://www.uplooder.net/img/image/55/7aa9993fc291bc170abea048589896cf/sun.svg';
@@ -27,10 +30,13 @@ export class NavbarComponent implements AfterViewInit {
   @ViewChild('themeIcon')
   themeIcon!: ElementRef;
 
+  ngOnInit() {
+    this.isDarkMode = this.isDarkDefault.matches;
+  }
+
   ngAfterViewInit() {
     document.body.classList.toggle('dark-theme', this.isDarkDefault.matches);
     this.themeContainer.nativeElement.addEventListener('click', this.setTheme.bind(this));
-    this.isDarkMode = this.isDarkDefault.matches;
 
     if (this.isDarkMode) {
       this.themeContainer.nativeElement.classList.add("shadow-dark");
@@ -64,7 +70,5 @@ export class NavbarComponent implements AfterViewInit {
       this.themeIcon.nativeElement.classList.add("change");
       this.isDarkMode = true;
     }
-
-    //this.isDarkMode = !this.isDarkMode;
   }
 }

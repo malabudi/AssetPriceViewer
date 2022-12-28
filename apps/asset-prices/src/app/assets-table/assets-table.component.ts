@@ -36,7 +36,7 @@ import { SortableHeaderDirective, SortEvent, compare } from '../sortable-header.
         </table>
       </div>
 
-      <!-- Temp, loading indicator -->
+      <!-- Loading indicator -->
       <div *ngIf='isLoading' class="center-page">
           <div class="sk-cube-grid">
             <div class="sk-cube sk-cube1"></div>
@@ -53,10 +53,6 @@ import { SortableHeaderDirective, SortEvent, compare } from '../sortable-header.
 
       <pagination-controls class="table-pagination" (pageChange)="p = $event"></pagination-controls>
     </div>
-
-    
-
-    
   `,
   styleUrls: ['./assets-table.component.scss'],
 })

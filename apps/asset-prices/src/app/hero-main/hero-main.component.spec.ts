@@ -25,16 +25,16 @@ describe('HeroMainComponent', () => {
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
     expect(compiled.querySelector('h1')?.textContent).toContain(
-      'Asset Price Viewer'
+      'Crypto Price Viewer'
     );
   });
 
-  it('should render paragraph', () => {
+  it('should render heading 2', () => {
     const fixture = TestBed.createComponent(HeroMainComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('p')?.textContent).toContain(
-      'Check out the latest prices on cryptocurrency, stocks, and precious metals'
+    expect(compiled.querySelector('h2')?.textContent).toContain(
+      'Check out the latest prices, market capitalization, and 24 hour change on the top 200 cryptocurrencies.'
     );
   });
 });
