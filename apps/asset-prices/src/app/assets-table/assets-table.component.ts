@@ -1,7 +1,6 @@
 import { Component, QueryList, ViewChildren } from '@angular/core';
 import { CryptoService } from '../crypto.service';
-// eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
-import { IAsset, CryptoAsset } from '../../../../../libs/interfaces/src/lib/crypto-asset';
+import { IAsset, CryptoAsset } from '@asset-price-viewer/interfaces';
 import { SortableHeaderDirective, SortEvent, compare } from '../sortable-header.directive';
 
 @Component({

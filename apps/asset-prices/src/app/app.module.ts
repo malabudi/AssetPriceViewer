@@ -20,14 +20,14 @@ import { NavbarComponent } from './navbar/navbar.component';
     AssetsTableComponent,
     AssetPipe,
     SortableHeaderDirective,
-    NavbarComponent,
+    NavbarComponent
   ],
   imports: [
     HttpClientModule,
     BrowserModule,
     FormsModule,
     NgxPaginationModule,
-    NgbModule,
+    NgbModule
   ],
   providers: [CryptoService],
   bootstrap: [AppComponent],

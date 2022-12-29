@@ -5,9 +5,11 @@ import { ElementRef, ViewChild, Component, AfterViewInit, OnInit } from '@angula
   template: ` 
       <div class='nav'>
         <div>
-          <img class='main-nav-img' 
-          src='https://www.reshot.com/preview-assets/icons/DUCN7XW5P4/analytics-chart-DUCN7XW5P4.svg' 
-          alt='main navbar image'>
+          <a href=''>
+            <img class='main-nav-img' 
+            src='https://www.reshot.com/preview-assets/icons/DUCN7XW5P4/analytics-chart-DUCN7XW5P4.svg' 
+            alt='main navbar image'>
+          </a>
         </div>
         <div #themeContainer class='theme-container'>
           <img #themeIcon id='theme-icon'
