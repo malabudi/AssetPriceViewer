@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { IAsset } from 'libs/interfaces/src/lib/crypto-asset';
+import { IAsset } from '@asset-price-viewer/interfaces';
 
 @Pipe({
   name: 'asset'

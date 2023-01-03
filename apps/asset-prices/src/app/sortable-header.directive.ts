@@ -1,5 +1,5 @@
 import { Directive, EventEmitter, Input, Output, HostBinding, HostListener } from '@angular/core';
-import { IAsset } from 'libs/interfaces/src/lib/crypto-asset';
+import { IAsset } from '@asset-price-viewer/interfaces';
 
 export type SortColumn = keyof IAsset | '';
 export type SortDirection = 'asc' | 'desc' | '';
