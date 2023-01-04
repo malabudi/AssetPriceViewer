@@ -76,5 +76,5 @@
       "style": "scss"
     }
   },
-  "defaultProject": "api"
+  "defaultProject": "asset-prices"
 }

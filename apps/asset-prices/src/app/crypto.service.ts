@@ -9,6 +9,6 @@ export class CryptoService {
   constructor(private http: HttpClient) { }
 
   getCryptos() {
-    return this.http.get('http://localhost:3333/api/cryptos');
+    return this.http.get('https://asset-api.herokuapp.com/api/cryptos');
   }
 }

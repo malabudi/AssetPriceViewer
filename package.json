@@ -9,10 +9,10 @@
   "scripts": {
     "ng": "nx",
     "postinstall": "node ./decorate-angular-cli.js",
-    "start": "node apps/api/src/main.ts",
-    "build": "nx build api --prod",
+    "start": "nx serve",
+    "build": "nx build",
     "test": "nx test",
-    "serve:api:prod": "node node_modules/nx/bin/nx serve api"
+    "build:asset-prices:prod": "node node_modules/nx/bin/nx build asset-prices --configuration=production --prod"
   },
   "private": true,
   "dependencies": {
