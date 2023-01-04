@@ -21,7 +21,8 @@
         "inlineStyleLanguage": "scss",
         "assets": [
           "apps/asset-prices/src/favicon.ico",
-          "apps/asset-prices/src/assets"
+          "apps/asset-prices/src/assets",
+          "apps/asset-prices/src/netlify.toml"
         ],
         "styles": [
           "apps/asset-prices/src/styles.scss"
