@@ -9,6 +9,7 @@ export class CryptoService {
   constructor(private http: HttpClient) { }
 
   getCryptos() {
-    return this.http.get('https://asset-api.herokuapp.com/api/cryptos');
+    const prodURL = 'https://asset-prices-api-production.up.railway.app/';
+    return this.http.get(prodURL + 'api/cryptos');
   }
 }
